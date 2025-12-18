@@ -27,8 +27,8 @@ public class Red {
 
      void resetCompromisos() {
             // TODO: poner comprometido=false a todos los nodos
-            for(Nodo n : nodos){
-                    n.comprometido = false;
+            for (Nodo n : nodos) {
+                n.comprometido = false;
             }
     }
 
@@ -37,12 +37,33 @@ public class Red {
             // Reglas:
             // - si un nodo visitado es vulnerable => comprometido=true
             // - si un nodo visitado es firewall => NO se propaga a sus vecinos
+            ArrayList<Nodo> visitados = new ArrayList<>();
+            ArrayList<Nodo> porVisitar = new ArrayList<>();
+            porVisitar.add(origen);
+
+            while (!porVisitar.isEmpty()) {
+                Nodo actual = porVisitar.remove(0);
+                if (!visitados.contains(actual)) {
+                    visitados.add(actual);
+                    if (actual.vulnerable) {
+                        actual.comprometido = true;
+                    }
+                    for (Nodo vecino : actual.vecinos) {
+                        if (!visitados.contains(vecino)) {
+                            if (vecino.firewall) {
+                                continue;
+                            }
+                            porVisitar.add(vecino);
+                        }
+                    }
+                }
+            }
     }
 
     Nodo buscarPorIP(String ip) {
             // Buscar por IP (iterar nodos)
-            for(Nodo n : nodos){
-                if (n.ip.equals(ip)){
+            for (Nodo n : nodos) {
+                if (n.ip.equals(ip)) {
                     return n;
                 }
             }
@@ -51,20 +72,13 @@ public class Red {
   
     int contarVulnerablesAlcanzables(Nodo origen) {
             // Contar vulnerables alcanzables desde origen (BFS)
-            int count = 0;
-            for(Nodo n : nodos){
-                if (n){
-                    count += 1;
-                }
-            }
-            return count;
+            
+            
+            return 0;
     }
 
     String listarVecinosDe(Nodo n) {
             // Listar vecinos (iterar vecinos)
-            for(Nodo n : nodos){
-                n.getVecinos();
-            }
             return "";
     }
 
