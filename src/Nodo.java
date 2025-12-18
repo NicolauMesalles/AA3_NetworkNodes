@@ -41,6 +41,6 @@ public class Nodo {
     public String toString() {
         // TODO: devolver algo tipo:
         // "WebServer (172.16.0.10) [VULN] [PWN]" etc.
-        return "";
+        return nombre + " (" + ip + ") [" + (vulnerable ? "VULN" : "NO VULN") + "] [" + (comprometido ? "PWN" : "NO PWN") + "]";
     }
 }

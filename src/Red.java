@@ -27,6 +27,9 @@ public class Red {
 
      void resetCompromisos() {
             // TODO: poner comprometido=false a todos los nodos
+            for (Nodo n : nodos) {
+                n.setComprometido(false);
+            }
     }
 
     void escanearDesde(Nodo origen) {
