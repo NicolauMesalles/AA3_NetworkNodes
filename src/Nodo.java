@@ -43,4 +43,15 @@ public class Nodo {
         // "WebServer (172.16.0.10) [VULN] [PWN]" etc.
         return nombre + " (" + ip + ") [" + (vulnerable ? "VULN" : "NO VULN") + "] [" + (comprometido ? "PWN" : "NO PWN") + "]";
     }
+
+    public void setComprometido(boolean comprometido) {
+        this.comprometido = comprometido;
+    }
+
+    public boolean isComprometido() {
+        return comprometido;
+    }
+    
+    
+    
 }
