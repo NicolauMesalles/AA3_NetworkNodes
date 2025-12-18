@@ -79,7 +79,7 @@ public class Red {
 		int contador = 0;
 
 		while (!porVisitar.isEmpty()) {
-			Nodo actual = porVisitar.remove(0);
+			Nodo actual = (Nodo) porVisitar.remove(0);
 			if (!visitados.contains(actual)) {
 				visitados.add(actual);
 				if (actual.vulnerable) {
